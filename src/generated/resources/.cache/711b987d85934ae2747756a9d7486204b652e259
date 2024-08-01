@@ -1,0 +1,12 @@
+// 1.20.1	2024-08-01T15:08:43.285517778	Tags for minecraft:block mod id hotswap
+9efb59add05991dba27527afc54a4d9549bb27d4 data/forge/tags/blocks/ores.json
+d108c3d239b52ef97cbeaf08012bd59f43ac2f30 data/forge/tags/blocks/ores/lead.json
+da32431fe62543f290d95db368f7c419be5749eb data/forge/tags/blocks/ores/osmium.json
+41f0cdc5a872104d8b3fb5b723c4961f99c5e660 data/forge/tags/blocks/ores/uranium.json
+9efb59add05991dba27527afc54a4d9549bb27d4 data/minecraft/tags/blocks/mineable/pickaxe.json
+9efb59add05991dba27527afc54a4d9549bb27d4 data/minecraft/tags/blocks/needs_stone_tool.json
+9efb59add05991dba27527afc54a4d9549bb27d4 data/tfc/tags/blocks/can_collapse.json
+9efb59add05991dba27527afc54a4d9549bb27d4 data/tfc/tags/blocks/can_start_collapse.json
+9efb59add05991dba27527afc54a4d9549bb27d4 data/tfc/tags/blocks/can_trigger_collapse.json
+9efb59add05991dba27527afc54a4d9549bb27d4 data/tfc/tags/blocks/powderkeg_breaking_blocks.json
+9efb59add05991dba27527afc54a4d9549bb27d4 data/tfc/tags/blocks/prospectable.json

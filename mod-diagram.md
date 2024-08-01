@@ -108,11 +108,6 @@ class `curios`["Curios API"] {
   version: 5.9.1+1.20.1
 }
 
-class `ferritecore`["Ferrite Core"] {
-  id: ferritecore
-  version: 6.0.1
-}
-
 class `flywheel`["Flywheel"] {
   id: flywheel
   version: 0.6.10-7
@@ -184,11 +179,6 @@ class `modernfix`["ModernFix"] {
   version: 5.19.0+mc1.20.1
 }
   `modernfix` <-- `jei`
-
-class `mousetweaks`["Mouse Tweaks"] {
-  id: mousetweaks
-  version: 2.25
-}
 
 class `neat`["Neat"] {
   id: neat

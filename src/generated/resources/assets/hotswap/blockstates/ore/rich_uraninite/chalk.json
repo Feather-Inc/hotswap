@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "hotswap:block/ore/rich_uraninite/chalk"
+    }
+  }
+}

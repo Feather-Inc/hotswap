@@ -1,4 +1,4 @@
-# Mods (43)
+# Mods (41)
 * Applied Energistics 2-\[ae2]-15.2.11
 * AE2WTLib-\[ae2wtlib]-15.2.3-forge
 * AppleSkin-\[appleskin]-2.5.1+mc1.20.1
@@ -17,7 +17,6 @@
 * Create-\[create]-0.5.1.f
 * Create Applied Kinetics-\[createappliedkinetics]-1.3.2-1.20.1
 * Curios API-\[curios]-5.9.1+1.20.1
-* Ferrite Core-\[ferritecore]-6.0.1
 * Flywheel-\[flywheel]-0.6.10-7
 * hotswap-\[hotswap]-1.0-SNAPSHOT
 * Jade-\[jade]-11.9.4+forge
@@ -30,7 +29,6 @@
 * Mekanism: Generators-\[mekanismgenerators]-10.4.8
 * MixinExtras-\[mixinextras]-0.3.2
 * ModernFix-\[modernfix]-5.19.0+mc1.20.1
-* Mouse Tweaks-\[mousetweaks]-2.25
 * Neat-\[neat]-1.20-35-FORGE
 * Open Parties and Claims-\[openpartiesandclaims]-0.23.2
 * Packet Fixer-\[packetfixer]-1.4.2

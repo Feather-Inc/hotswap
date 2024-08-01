@@ -1,64 +1,77 @@
 package com.juanmuscaria.hotswap;
 
+import com.juanmuscaria.hotswap.blocks.HBlocks;
+import com.juanmuscaria.hotswap.items.HItems;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.gui.ModListScreen;
-import net.minecraftforge.client.gui.widget.ModListWidget;
-import net.minecraftforge.common.MinecraftForge;
+import net.dries007.tfc.common.TFCCreativeTabs;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.util.MavenVersionStringHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
-import net.minecraftforge.fml.loading.FMLLoader;
-import net.minecraftforge.fml.loading.LoadingModList;
-import net.minecraftforge.fml.loading.moddiscovery.ModInfo;
 import net.minecraftforge.forgespi.language.IModInfo;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Locale;
 
-@Mod(Hotswap.MODID)
+@Mod(Hotswap.MOD_ID)
 public class Hotswap {
-
-    public static final String MODID = "hotswap";
+    public static final String MOD_ID = "hotswap";
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public Hotswap() {
         var modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::gatherData);
+        modEventBus.addListener(this::addCreativeTabItems);
+        HBlocks.BLOCKS.register(modEventBus);
+        HItems.ITEMS.register(modEventBus);
+    }
+
+    private void addCreativeTabItems(BuildCreativeModeTabContentsEvent event) {
+        var tfcOres = TFCCreativeTabs.ORES.tab();
+        if (tfcOres.get().equals(event.getTab())) {
+            HBlocks.ORES.forEach((rock, rockOres) ->
+                rockOres.forEach((ore, block) ->
+                    event.accept(block)
+                )
+            );
+
+            HBlocks.GRADED_ORES.forEach((rock, oreGrades) ->
+                oreGrades.forEach((ore, gradeBlocks) ->
+                    gradeBlocks.forEach((grade, block) ->
+                        event.accept(block)
+                    )
+                )
+            );
+
+            HItems.ORES.forEach((ore, item) ->
+                event.accept(item)
+            );
+
+            HItems.GRADED_ORES.forEach((ore, gradeItems) ->
+                gradeItems.forEach((grade, item) ->
+                    event.accept(item)
+                )
+            );
+        }
 
     }
 
-    public void commonSetup(FMLCommonSetupEvent event) {
+    private void gatherData(GatherDataEvent event) {
+        HotswapDataGenerators.addProviders(event);
+    }
+
+    private void commonSetup(FMLCommonSetupEvent event) {
         if (!FMLEnvironment.production) {
             LOGGER.info("Generating mod mermaid diagram and mod list...");
             var idBlacklist = Arrays.asList("forge", "mcp", "fml", "minecraft");

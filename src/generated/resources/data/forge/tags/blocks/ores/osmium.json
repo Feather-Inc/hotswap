@@ -1,0 +1,24 @@
+{
+  "values": [
+    "hotswap:ore/iridosmine/granite",
+    "hotswap:ore/iridosmine/diorite",
+    "hotswap:ore/iridosmine/gabbro",
+    "hotswap:ore/iridosmine/shale",
+    "hotswap:ore/iridosmine/claystone",
+    "hotswap:ore/iridosmine/limestone",
+    "hotswap:ore/iridosmine/conglomerate",
+    "hotswap:ore/iridosmine/dolomite",
+    "hotswap:ore/iridosmine/chert",
+    "hotswap:ore/iridosmine/chalk",
+    "hotswap:ore/iridosmine/rhyolite",
+    "hotswap:ore/iridosmine/basalt",
+    "hotswap:ore/iridosmine/andesite",
+    "hotswap:ore/iridosmine/dacite",
+    "hotswap:ore/iridosmine/quartzite",
+    "hotswap:ore/iridosmine/slate",
+    "hotswap:ore/iridosmine/phyllite",
+    "hotswap:ore/iridosmine/schist",
+    "hotswap:ore/iridosmine/gneiss",
+    "hotswap:ore/iridosmine/marble"
+  ]
+}

@@ -113,7 +113,8 @@ minecraft {
             workingDirectory project.file('run-data')
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'),
+                '--existing-mod', 'tfc'
         }
     }
 }
@@ -171,13 +172,13 @@ dependencies {
     implementation fg.deobf("curse.maven:jei-238222:5576551")
     implementation fg.deobf("curse.maven:just-enough-mekanism-multiblocks-898746:5569679")
     implementation fg.deobf("curse.maven:mekanism-cardboard-tooltip-975586:5299534")
-    implementation fg.deobf("curse.maven:mouse-tweaks-60089:4581240")
+    //implementation fg.deobf("curse.maven:mouse-tweaks-60089:4581240")
     implementation fg.deobf("curse.maven:neat-238372:4580940") // neat
     //implementation fg.deobf("curse.maven:sound-physics-remastered-535489:5525256")
 
     // Performance & Fixes
     implementation fg.deobf("curse.maven:clumps-256717:5278538")
-    implementation fg.deobf("curse.maven:ferritecore-429235:4810975")
+    //implementation fg.deobf("curse.maven:ferritecore-429235:4810975")
     implementation fg.deobf("curse.maven:modernfix-790626:5569652")
     implementation fg.deobf("curse.maven:packet-fixer-689467:5416166")
 

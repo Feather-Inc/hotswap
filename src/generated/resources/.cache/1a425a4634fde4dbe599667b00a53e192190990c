@@ -1,0 +1,4 @@
+// 1.20.1	2024-08-01T15:08:43.28613745	Tags for minecraft:item mod id hotswap
+76ef935436de8c25dfdd9deb77b307bbd6f04ec0 data/forge/tags/items/ores/lead.json
+ecb0de47c8347ed0338e70ba92f3f3a78b8f5696 data/forge/tags/items/ores/osmium.json
+44ad7c5ef5366688f9b14b98a22f114b8dfa253f data/forge/tags/items/ores/uranium.json
