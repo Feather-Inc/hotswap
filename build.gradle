@@ -260,11 +260,25 @@ var remapToObf = objects.mapProperty(String, File).value(providers.provider {
     finalizeValueOnRead()
 }
 
+def addCommonFiles(Zip zip, boolean includeMods = true, String basePath = "") {
+    zip.with {
+        if (includeMods) {
+            from(jar.outputs) {
+                into basePath + "/mods"
+            }
+        }
+
+        from(layout.projectDirectory.file("src/pack/minecraft")) {
+            into basePath
+        }
+    }
+}
+
 tasks.register("packageServer", Zip) {
-    archiveBaseName = "server"
+    archiveBaseName = "hotswap-server"
     destinationDirectory = file("${layout.buildDirectory.get()}/distributions")
 
-    addCommonFiles(it, true)
+    addCommonFiles(it)
 
     configurations.serverDistOnly.resolvedConfiguration.resolvedArtifacts.collect {
         var mod = remapToObf.get().get(it.moduleVersion.id.toString().replaceAll('_mapped_.*', ''))
@@ -278,14 +292,66 @@ tasks.register("packageServer", Zip) {
     description("Makes a server pack")
 }
 
-def addCommonFiles(Zip zip, boolean includeMods) {
-    zip.with {
-        if (includeMods) {
-            from(jar.outputs) {
-                into "mods"
-            }
-        }
+tasks.register("packageManual", Zip) {
+    archiveBaseName = "hotswap"
+    destinationDirectory = file("${layout.buildDirectory.get()}/distributions")
 
-        from(layout.projectDirectory.file("src/pack"))
+    addCommonFiles(it)
+
+    configurations.clientDistOnly.resolvedConfiguration.resolvedArtifacts.collect {
+        var mod = remapToObf.get().get(it.moduleVersion.id.toString().replaceAll('_mapped_.*', ''))
+        inputs.file(mod)
+        from (mod) {
+            into "mods"
+        }
     }
+
+    group('modpack')
+    description("Makes a client pack")
+}
+
+tasks.register("packageTechnic", Zip) {
+    archiveBaseName = "hotswap-technic"
+    destinationDirectory = file("${layout.buildDirectory.get()}/distributions")
+
+    addCommonFiles(it)
+
+    from(layout.projectDirectory.file("src/pack/technic"))
+
+    configurations.clientDistOnly.resolvedConfiguration.resolvedArtifacts.collect {
+        var mod = remapToObf.get().get(it.moduleVersion.id.toString().replaceAll('_mapped_.*', ''))
+        inputs.file(mod)
+        from (mod) {
+            into "mods"
+        }
+    }
+
+    group('modpack')
+    description("Makes a client pack")
+}
+
+tasks.register("packageMultiMC", Zip) {
+    archiveBaseName = "hotswap-multimc"
+    destinationDirectory = file("${layout.buildDirectory.get()}/distributions")
+
+    addCommonFiles(it, true, ".minecraft")
+
+    from(layout.projectDirectory.file("src/pack/mmc"))
+
+    configurations.clientDistOnly.resolvedConfiguration.resolvedArtifacts.collect {
+        var mod = remapToObf.get().get(it.moduleVersion.id.toString().replaceAll('_mapped_.*', ''))
+        inputs.file(mod)
+        from (mod) {
+            into ".minecraft/mods"
+        }
+    }
+
+    group('modpack')
+    description("Makes a client pack")
+}
+
+tasks.register("packageAll") {
+    dependsOn("packageServer", "packageManual", "packageTechnic", "packageMultiMC")
+    group('modpack')
+    description("Makes all packs")
 }
