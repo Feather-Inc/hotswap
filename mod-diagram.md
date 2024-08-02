@@ -64,11 +64,6 @@ class `cloth_config`["Cloth Config v10 API"] {
   version: 11.1.118
 }
 
-class `clumps`["Clumps"] {
-  id: clumps
-  version: 12.0.0.4
-}
-
 class `codechickenlib`["CodeChicken Lib"] {
   id: codechickenlib
   version: 4.4.0.512
@@ -141,11 +136,6 @@ class `jei_mekanism_multiblocks`["Just Enough Mekanism Multiblocks"] {
 }
   `jei_mekanism_multiblocks` <-- `mekanism`
 
-class `luckperms`["LuckPerms"] {
-  id: luckperms
-  version: 5.4.102
-}
-
 class `mekanism`["Mekanism"] {
   id: mekanism
   version: 10.4.8
@@ -169,17 +159,6 @@ class `mekanismgenerators`["Mekanism: Generators"] {
 }
   `mekanismgenerators` <-- `mekanism`
 
-class `mixinextras`["MixinExtras"] {
-  id: mixinextras
-  version: 0.3.2
-}
-
-class `modernfix`["ModernFix"] {
-  id: modernfix
-  version: 5.19.0+mc1.20.1
-}
-  `modernfix` <-- `jei`
-
 class `neat`["Neat"] {
   id: neat
   version: 1.20-35-FORGE
@@ -190,11 +169,6 @@ class `openpartiesandclaims`["Open Parties and Claims"] {
   version: 0.23.2
 }
   `openpartiesandclaims` <-- `create`
-
-class `packetfixer`["Packet Fixer"] {
-  id: packetfixer
-  version: 1.4.2
-}
 
 class `patchouli`["Patchouli"] {
   id: patchouli

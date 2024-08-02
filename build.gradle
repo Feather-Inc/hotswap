@@ -137,58 +137,80 @@ repositories {
     }
 }
 
+configurations {
+    mod
+    serverOnly
+    clientOnly
+    distOnly
+    serverDistOnly
+    clientDistOnly
+
+    implementation.extendsFrom mod
+    implementation.extendsFrom serverOnly
+    implementation.extendsFrom clientOnly
+
+    distOnly.extendsFrom mod
+
+    serverDistOnly.extendsFrom serverOnly
+    serverDistOnly.extendsFrom distOnly
+
+    clientDistOnly.extendsFrom clientOnly
+    clientDistOnly.extendsFrom distOnly
+}
+
 dependencies {
+    //noinspection VulnerableLibrariesLocal
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
     // Libs
-    implementation fg.deobf("curse.maven:codechicken-lib-1-8-242818:5420418")
-    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
-    implementation fg.deobf("curse.maven:cb-multipart-258426:5311521")
-    implementation fg.deobf("curse.maven:cloth-config-348521:4973441")
-    implementation fg.deobf("curse.maven:curios-309927:5367944")
-    implementation fg.deobf("curse.maven:patchouli-306770:4966125")
-    implementation fg.deobf("curse.maven:searchables-858542:5284015")
+    mod fg.deobf("curse.maven:codechicken-lib-1-8-242818:5420418")
+    mod fg.deobf("curse.maven:architectury-api-419699:5137938")
+    mod fg.deobf("curse.maven:cb-multipart-258426:5311521")
+    mod fg.deobf("curse.maven:cloth-config-348521:4973441")
+    mod fg.deobf("curse.maven:curios-309927:5367944")
+    mod fg.deobf("curse.maven:patchouli-306770:4966125")
+    mod fg.deobf("curse.maven:searchables-858542:5284015")
 
     // Main mods
-    implementation fg.deobf("curse.maven:terrafirmacraft-302973:5571484")
-    implementation fg.deobf("curse.maven:applied-energistics-2-223794:5565729")
-    implementation fg.deobf("curse.maven:cc-tweaked-282001:5582994")
-    implementation fg.deobf("curse.maven:create-328085:4835191")
-    implementation fg.deobf("curse.maven:mekanism-268560:5395221")
-    implementation fg.deobf("curse.maven:mekanism-generators-268566:5395224")
+    mod fg.deobf("curse.maven:terrafirmacraft-302973:5571484")
+    mod fg.deobf("curse.maven:applied-energistics-2-223794:5565729")
+    mod fg.deobf("curse.maven:cc-tweaked-282001:5582994")
+    mod fg.deobf("curse.maven:create-328085:4835191")
+    mod fg.deobf("curse.maven:mekanism-268560:5395221")
+    mod fg.deobf("curse.maven:mekanism-generators-268566:5395224")
 
     // Glue
-    implementation fg.deobf("curse.maven:applied-mekanistics-574300:4842281")
-    implementation fg.deobf("curse.maven:create-applied-kinetics-867328:5077786")
+    mod fg.deobf("curse.maven:applied-mekanistics-574300:4842281")
+    mod fg.deobf("curse.maven:create-applied-kinetics-867328:5077786")
 
     // QoL mods
-    implementation fg.deobf("curse.maven:applied-energistics-2-wireless-terminals-459929:5217955")
-    implementation fg.deobf("curse.maven:appleskin-248787:4770828")
-    implementation fg.deobf("curse.maven:better-advancements-272515:5454909")
-    implementation fg.deobf("curse.maven:controlling-250398:4646682")
-    implementation fg.deobf("curse.maven:jade-324717:5493390")
-    implementation fg.deobf("curse.maven:jade-addons-583345:4925840")
-    implementation fg.deobf("curse.maven:jei-238222:5576551")
-    implementation fg.deobf("curse.maven:just-enough-mekanism-multiblocks-898746:5569679")
-    implementation fg.deobf("curse.maven:mekanism-cardboard-tooltip-975586:5299534")
-    //implementation fg.deobf("curse.maven:mouse-tweaks-60089:4581240")
-    implementation fg.deobf("curse.maven:neat-238372:4580940") // neat
-    //implementation fg.deobf("curse.maven:sound-physics-remastered-535489:5525256")
+    mod fg.deobf("curse.maven:applied-energistics-2-wireless-terminals-459929:5217955")
+    mod fg.deobf("curse.maven:better-advancements-272515:5454909")
+    mod fg.deobf("curse.maven:jade-324717:5493390")
+    mod fg.deobf("curse.maven:jade-addons-583345:4925840")
+    mod fg.deobf("curse.maven:jei-238222:5576551")
+    mod fg.deobf("curse.maven:just-enough-mekanism-multiblocks-898746:5569679")
+    mod fg.deobf("curse.maven:mekanism-cardboard-tooltip-975586:5299534")
+    clientOnly fg.deobf("curse.maven:appleskin-248787:4770828")
+    clientOnly fg.deobf("curse.maven:controlling-250398:4646682")
+    clientOnly fg.deobf("curse.maven:neat-238372:4580940") // neat
+    clientDistOnly fg.deobf("curse.maven:mouse-tweaks-60089:4581240")
+    clientDistOnly fg.deobf("curse.maven:sound-physics-remastered-535489:5525256")
 
     // Performance & Fixes
-    implementation fg.deobf("curse.maven:clumps-256717:5278538")
-    //implementation fg.deobf("curse.maven:ferritecore-429235:4810975")
-    implementation fg.deobf("curse.maven:modernfix-790626:5569652")
-    implementation fg.deobf("curse.maven:packet-fixer-689467:5416166")
+    distOnly fg.deobf("curse.maven:clumps-256717:5278538")
+    distOnly fg.deobf("curse.maven:ferritecore-429235:4810975")
+    distOnly fg.deobf("curse.maven:modernfix-790626:5569652")
+    distOnly fg.deobf("curse.maven:packet-fixer-689467:5416166")
 
     // Tools
-    implementation fg.deobf("curse.maven:crafttweaker-239197:5375591")
-    implementation fg.deobf("curse.maven:luckperms-431733:4738950")
-    implementation fg.deobf("curse.maven:open-parties-and-claims-636608:5556895")
-    implementation fg.deobf("curse.maven:spark-361579:4738952")
-    implementation fg.deobf("curse.maven:xaeros-minimap-263420:5394772")
-    implementation fg.deobf("curse.maven:xaeros-world-map-317780:5394829")
+    mod fg.deobf("curse.maven:crafttweaker-239197:5375591")
+    mod fg.deobf("curse.maven:open-parties-and-claims-636608:5556895")
+    mod fg.deobf("curse.maven:spark-361579:4738952")
+    mod fg.deobf("curse.maven:xaeros-minimap-263420:5394772")
+    mod fg.deobf("curse.maven:xaeros-world-map-317780:5394829")
+    serverDistOnly fg.deobf("curse.maven:luckperms-431733:4738950")
 
 }
 
@@ -225,4 +247,45 @@ tasks.named('jar', Jar).configure {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+var remapToObf = objects.mapProperty(String, File).value(providers.provider {
+    Map<String, File> mapped = [:]
+    configurations.__obfuscated.resolvedConfiguration.resolvedArtifacts.collect {
+        mapped.put(it.moduleVersion.id.toString(), it.file)
+    }
+    return mapped
+}).tap {
+    disallowChanges()
+    finalizeValueOnRead()
+}
+
+tasks.register("packageServer", Zip) {
+    archiveBaseName = "server"
+    destinationDirectory = file("${layout.buildDirectory.get()}/distributions")
+
+    addCommonFiles(it, true)
+
+    configurations.serverDistOnly.resolvedConfiguration.resolvedArtifacts.collect {
+        var mod = remapToObf.get().get(it.moduleVersion.id.toString().replaceAll('_mapped_.*', ''))
+        inputs.file(mod)
+        from (mod) {
+            into "mods"
+        }
+    }
+
+    group('modpack')
+    description("Makes a server pack")
+}
+
+def addCommonFiles(Zip zip, boolean includeMods) {
+    zip.with {
+        if (includeMods) {
+            from(jar.outputs) {
+                into "mods"
+            }
+        }
+
+        from(layout.projectDirectory.file("src/pack"))
+    }
 }

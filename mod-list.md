@@ -1,4 +1,4 @@
-# Mods (41)
+# Mods (36)
 * Applied Energistics 2-\[ae2]-15.2.11
 * AE2WTLib-\[ae2wtlib]-15.2.3-forge
 * AppleSkin-\[appleskin]-2.5.1+mc1.20.1
@@ -9,7 +9,6 @@
 * CBMultipart-\[cb_multipart]-3.3.0.146
 * CBMultipart Minecraft-\[cb_multipart_minecraft]-3.3.0.146
 * Cloth Config v10 API-\[cloth_config]-11.1.118
-* Clumps-\[clumps]-12.0.0.4
 * CodeChicken Lib-\[codechickenlib]-4.4.0.512
 * CC: Tweaked-\[computercraft]-1.112.0
 * Controlling-\[controlling]-12.0.2
@@ -23,15 +22,11 @@
 * Jade Addons-\[jadeaddons]-5.2.2
 * Just Enough Items-\[jei]-15.8.2.25
 * Just Enough Mekanism Multiblocks-\[jei_mekanism_multiblocks]-4.4
-* LuckPerms-\[luckperms]-5.4.102
 * Mekanism-\[mekanism]-10.4.8
 * Mekanism Cardboard Tooltip-\[mekanismcardboardtooltip]-1.4.0
 * Mekanism: Generators-\[mekanismgenerators]-10.4.8
-* MixinExtras-\[mixinextras]-0.3.2
-* ModernFix-\[modernfix]-5.19.0+mc1.20.1
 * Neat-\[neat]-1.20-35-FORGE
 * Open Parties and Claims-\[openpartiesandclaims]-0.23.2
-* Packet Fixer-\[packetfixer]-1.4.2
 * Patchouli-\[patchouli]-1.20.1-84-FORGE
 * Searchables-\[searchables]-1.0.3
 * spark-\[spark]-1.10.53
