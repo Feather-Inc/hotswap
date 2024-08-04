@@ -5,6 +5,8 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "hotswap.refmap.json",
   "mixins": [
+    "FixTFCCapSync$FriendlyByteBufMixin",
+    "FixTFCCapSync$ItemStackCapabilitySyncMixin"
   ],
   "client": [
     "datagen.ModelProviderMixin"
