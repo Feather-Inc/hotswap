@@ -69,11 +69,6 @@ class `codechickenlib`["CodeChicken Lib"] {
   version: 4.4.0.512
 }
 
-class `computercraft`["CC: Tweaked"] {
-  id: computercraft
-  version: 1.112.0
-}
-
 class `controlling`["Controlling"] {
   id: controlling
   version: 12.0.2
@@ -111,7 +106,7 @@ class `flywheel`["Flywheel"] {
 
 class `hotswap`["hotswap"] {
   id: hotswap
-  version: 0.1
+  version: 0.2
 }
 
 class `jade`["Jade"] {
@@ -178,6 +173,11 @@ class `patchouli`["Patchouli"] {
 class `searchables`["Searchables"] {
   id: searchables
   version: 1.0.3
+}
+
+class `serverredirect`["Server Redirect"] {
+  id: serverredirect
+  version: 1.4.5
 }
 
 class `spark`["spark"] {

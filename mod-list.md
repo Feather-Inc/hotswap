@@ -10,14 +10,13 @@
 * CBMultipart Minecraft-\[cb_multipart_minecraft]-3.3.0.146
 * Cloth Config v10 API-\[cloth_config]-11.1.118
 * CodeChicken Lib-\[codechickenlib]-4.4.0.512
-* CC: Tweaked-\[computercraft]-1.112.0
 * Controlling-\[controlling]-12.0.2
 * CraftTweaker-\[crafttweaker]-14.0.40
 * Create-\[create]-0.5.1.f
 * Create Applied Kinetics-\[createappliedkinetics]-1.3.2-1.20.1
 * Curios API-\[curios]-5.9.1+1.20.1
 * Flywheel-\[flywheel]-0.6.10-7
-* hotswap-\[hotswap]-0.1
+* hotswap-\[hotswap]-0.2
 * Jade-\[jade]-11.9.4+forge
 * Jade Addons-\[jadeaddons]-5.2.2
 * Just Enough Items-\[jei]-15.8.2.25
@@ -29,6 +28,7 @@
 * Open Parties and Claims-\[openpartiesandclaims]-0.23.2
 * Patchouli-\[patchouli]-1.20.1-84-FORGE
 * Searchables-\[searchables]-1.0.3
+* Server Redirect-\[serverredirect]-1.4.5
 * spark-\[spark]-1.10.53
 * TerraFirmaCraft-\[tfc]-3.2.7
 * Xaero's Minimap-\[xaerominimap]-24.2.0
