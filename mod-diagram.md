@@ -111,7 +111,7 @@ class `flywheel`["Flywheel"] {
 
 class `hotswap`["hotswap"] {
   id: hotswap
-  version: 1.0-SNAPSHOT
+  version: 0.1
 }
 
 class `jade`["Jade"] {

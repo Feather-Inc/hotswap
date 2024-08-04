@@ -17,7 +17,7 @@
 * Create Applied Kinetics-\[createappliedkinetics]-1.3.2-1.20.1
 * Curios API-\[curios]-5.9.1+1.20.1
 * Flywheel-\[flywheel]-0.6.10-7
-* hotswap-\[hotswap]-1.0-SNAPSHOT
+* hotswap-\[hotswap]-0.1
 * Jade-\[jade]-11.9.4+forge
 * Jade Addons-\[jadeaddons]-5.2.2
 * Just Enough Items-\[jei]-15.8.2.25
