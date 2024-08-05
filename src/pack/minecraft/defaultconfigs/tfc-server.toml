@@ -836,7 +836,7 @@ familiarityDecayLimit = 0.3
 		enableVanillaMonsters = true
 		#
 		# If true, vanilla monsters will spawn on the surface instead of just underground. If false, vanilla monsters will not spawn on the surface.
-		enableVanillaMonstersOnSurface = true
+		enableVanillaMonstersOnSurface = false
 		#
 		# If true, chicken jockies can spawn
 		enableChickenJockies = true
