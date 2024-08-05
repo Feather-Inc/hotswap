@@ -34,6 +34,12 @@ class `architectury`["Architectury"] {
   version: 9.2.14
 }
 
+class `argonauts`["Argonauts"] {
+  id: argonauts
+  version: 1.0.10
+}
+  `argonauts` <-- `resourcefullib`
+
 class `betteradvancements`["Better Advancements"] {
   id: betteradvancements
   version: 0.4.2.10
@@ -67,6 +73,11 @@ class `cloth_config`["Cloth Config v10 API"] {
 class `codechickenlib`["CodeChicken Lib"] {
   id: codechickenlib
   version: 4.4.0.512
+}
+
+class `computercraft`["CC: Tweaked"] {
+  id: computercraft
+  version: 1.112.0
 }
 
 class `controlling`["Controlling"] {
@@ -104,9 +115,20 @@ class `flywheel`["Flywheel"] {
 }
   `flywheel` <-- `rubidium`
 
+class `heracles`["Heracles"] {
+  id: heracles
+  version: 1.1.13
+}
+  `heracles` <-- `resourcefullib`
+
+class `hermes`["hermes"] {
+  id: hermes
+  version: 1.6.0
+}
+
 class `hotswap`["hotswap"] {
   id: hotswap
-  version: 0.2
+  version: 0.4
 }
 
 class `jade`["Jade"] {
@@ -154,6 +176,11 @@ class `mekanismgenerators`["Mekanism: Generators"] {
 }
   `mekanismgenerators` <-- `mekanism`
 
+class `mixinextras`["MixinExtras"] {
+  id: mixinextras
+  version: 0.2.1
+}
+
 class `neat`["Neat"] {
   id: neat
   version: 1.20-35-FORGE
@@ -168,6 +195,17 @@ class `openpartiesandclaims`["Open Parties and Claims"] {
 class `patchouli`["Patchouli"] {
   id: patchouli
   version: 1.20.1-84-FORGE
+}
+
+class `prometheus`["Prometheus"] {
+  id: prometheus
+  version: 1.2.5
+}
+  `prometheus` <-- `resourcefullib`
+
+class `resourcefullib`["Resourceful Lib"] {
+  id: resourcefullib
+  version: 2.1.28
 }
 
 class `searchables`["Searchables"] {

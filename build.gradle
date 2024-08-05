@@ -135,6 +135,9 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    flatDir {
+        dirs 'run/jarinjar'
+    }
 }
 
 configurations {
@@ -171,6 +174,7 @@ dependencies {
     mod fg.deobf("curse.maven:curios-309927:5367944")
     mod fg.deobf("curse.maven:patchouli-306770:4966125")
     mod fg.deobf("curse.maven:searchables-858542:5284015")
+    mod fg.deobf("curse.maven:resourceful-lib-570073:5568216")
 
     // Main mods
     mod fg.deobf("curse.maven:terrafirmacraft-302973:5571484")
@@ -212,8 +216,13 @@ dependencies {
     mod fg.deobf("curse.maven:spark-361579:4738952")
     mod fg.deobf("curse.maven:xaeros-minimap-263420:5394772")
     mod fg.deobf("curse.maven:xaeros-world-map-317780:5394829")
+    mod fg.deobf("curse.maven:heracles-845831:5406935")
+    mod fg.deobf("curse.maven:argonauts-845833:5263580")
+    mod fg.deobf("curse.maven:prometheus-845834:5220299")
     serverDistOnly fg.deobf("curse.maven:luckperms-431733:4738950")
 
+    // JarInJar hack
+    implementation fg.deobf("local:hermes-forge:1.20-1.6.0")
 }
 
 tasks.named('processResources', ProcessResources).configure {
