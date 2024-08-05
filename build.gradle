@@ -201,6 +201,7 @@ dependencies {
     clientOnly fg.deobf("curse.maven:neat-238372:4580940") // neat
     //clientOnly fg.deobf("curse.maven:forge-client-reset-packet-forward-862147:4808617")
     clientOnly fg.deobf("curse.maven:server-redirect-295232:4683939")
+    clientOnly fg.deobf("curse.maven:minemenu-222378:4938047")
     clientDistOnly fg.deobf("curse.maven:mouse-tweaks-60089:4581240")
     clientDistOnly fg.deobf("curse.maven:sound-physics-remastered-535489:5525256")
 

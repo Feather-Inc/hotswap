@@ -1,0 +1,16 @@
+{
+  "main": {
+    "5": {
+      "title": "Quest",
+      "icon": {
+        "stack": "{Count:1b,id:\"heracles:quest_book\"}"
+      },
+      "action": {
+        "key": {
+          "key": "key.heracles.open_quests",
+          "toggle": false
+        }
+      }
+    }
+  }
+}

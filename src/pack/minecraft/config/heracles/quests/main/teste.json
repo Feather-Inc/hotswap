@@ -1,0 +1,60 @@
+{
+  "dependencies": [],
+  "tasks": {
+    "asdas": {
+      "title": "Sim",
+      "icon": {
+        "item": {
+          "id": "minecraft:gravel",
+          "count": 1
+        },
+        "type": "heracles:item"
+      },
+      "type": "heracles:check"
+    }
+  },
+  "rewards": {
+    "asasd": {
+      "item": {
+        "id": "tfc:ore/small_native_copper",
+        "count": 10,
+        "nbt": {
+          "Damage": 0
+        }
+      },
+      "type": "heracles:item"
+    }
+  },
+  "display": {
+    "subtitle": {
+      "translate": "aaaaaa"
+    },
+    "description": [
+      "> Temp__/6/late/6/__"
+    ],
+    "groups": {
+      "Main": {
+        "position": [
+          -195,
+          -79
+        ]
+      }
+    },
+    "icon": {
+      "item": "#tfc:small_ore_pieces",
+      "type": "heracles:item"
+    },
+    "icon_background": "heracles:textures/gui/quest_backgrounds/pentagons.png",
+    "title": {
+      "translate": "teste"
+    }
+  },
+  "settings": {
+    "showDependencyArrow": true,
+    "repeatable": false,
+    "autoClaimRewards": false,
+    "individual_progress": true,
+    "hidden": "LOCKED",
+    "unlockNotification": false
+  }
+}

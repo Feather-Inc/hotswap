@@ -176,9 +176,15 @@ class `mekanismgenerators`["Mekanism: Generators"] {
 }
   `mekanismgenerators` <-- `mekanism`
 
+class `minemenu`["MineMenu"] {
+  id: minemenu
+  version: 1.12.3
+}
+  `minemenu` <-- `controlling`
+
 class `mixinextras`["MixinExtras"] {
   id: mixinextras
-  version: 0.2.1
+  version: 0.2.0-beta.8
 }
 
 class `neat`["Neat"] {

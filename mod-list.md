@@ -1,4 +1,4 @@
-# Mods (43)
+# Mods (44)
 * Applied Energistics 2-\[ae2]-15.2.11
 * AE2WTLib-\[ae2wtlib]-15.2.3-forge
 * AppleSkin-\[appleskin]-2.5.1+mc1.20.1
@@ -28,7 +28,8 @@
 * Mekanism-\[mekanism]-10.4.8
 * Mekanism Cardboard Tooltip-\[mekanismcardboardtooltip]-1.4.0
 * Mekanism: Generators-\[mekanismgenerators]-10.4.8
-* MixinExtras-\[mixinextras]-0.2.1
+* MineMenu-\[minemenu]-1.12.3
+* MixinExtras-\[mixinextras]-0.2.0-beta.8
 * Neat-\[neat]-1.20-35-FORGE
 * Open Parties and Claims-\[openpartiesandclaims]-0.23.2
 * Patchouli-\[patchouli]-1.20.1-84-FORGE
