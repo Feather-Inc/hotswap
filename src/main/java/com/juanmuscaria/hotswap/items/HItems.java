@@ -1,10 +1,14 @@
 package com.juanmuscaria.hotswap.items;
 
 import com.juanmuscaria.hotswap.blocks.HOre;
+import com.juanmuscaria.hotswap.fluids.AllFluids;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.fluids.FluidId;
 import net.dries007.tfc.util.Helpers;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -25,6 +29,10 @@ public class HItems {
         Helpers.mapOfKeys(Ore.Grade.class, grade ->
             register("ore/" + grade.name() + '_' + ore.name())
         )
+    );
+
+    public static final Map<AllFluids, RegistryObject<BucketItem>> FLUID_BUCKETS = AllFluids.mapOf(fluid ->
+        register("bucket/" + fluid.name(), () -> new BucketItem(fluid.fluid(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)))
     );
 
     private static RegistryObject<Item> register(String name) {

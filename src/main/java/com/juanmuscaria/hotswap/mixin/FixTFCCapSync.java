@@ -52,6 +52,13 @@ public class FixTFCCapSync {
 
     @Mixin(FriendlyByteBuf.class)
     public static abstract class FriendlyByteBufMixin {
+        @Unique
+        private static void hotswap$writeToNetwork(Capability<? extends INBTSerializable<CompoundTag>> capability, ItemStack stack, FriendlyByteBuf buffer) {
+            stack.getCapability(capability)
+                .map(INBTSerializable::serializeNBT)
+                .ifPresent(nbt -> stack.addTagElement(CAP_PREFIX + capability.getName(), nbt));
+        }
+
         @SuppressWarnings({"DataFlowIssue", "SynchronizationOnLocalVariableOrMethodParameter"})
         @Inject(method = "writeItemStack", at = @At("HEAD"), remap = false)
         private void addCapData(ItemStack stack, boolean limitedTag, CallbackInfoReturnable<FriendlyByteBuf> cir) {
@@ -61,13 +68,6 @@ public class FixTFCCapSync {
                     hotswap$writeToNetwork(HeatCapability.NETWORK_CAPABILITY, stack, (FriendlyByteBuf) (Object) this);
                 }
             }
-        }
-
-        @Unique
-        private static void hotswap$writeToNetwork(Capability<? extends INBTSerializable<CompoundTag>> capability, ItemStack stack, FriendlyByteBuf buffer) {
-            stack.getCapability(capability)
-                .map(INBTSerializable::serializeNBT)
-                .ifPresent(nbt -> stack.addTagElement(CAP_PREFIX + capability.getName(), nbt));
         }
     }
 }

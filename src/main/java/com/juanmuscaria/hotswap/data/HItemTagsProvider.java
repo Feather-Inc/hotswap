@@ -27,7 +27,7 @@ public class HItemTagsProvider extends ItemTagsProvider {
         });
 
         HItems.GRADED_ORES.forEach((ore, gradeItems) ->
-            gradeItems.forEach((grade, item) ->{
+            gradeItems.forEach((grade, item) -> {
                 var oreTags = oreSpecificTags.get(ore);
                 if (oreTags != null) {
                     oreTags.stream().map(this::tag).forEach(tag -> tag.add(item.get()));

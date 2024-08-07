@@ -10,7 +10,9 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(value = ModelProvider.class, remap = false)
 public class ModelProviderMixin {
-    @Shadow @Final protected String folder;
+    @Shadow
+    @Final
+    protected String folder;
 
     /**
      * @author juanmuscaria

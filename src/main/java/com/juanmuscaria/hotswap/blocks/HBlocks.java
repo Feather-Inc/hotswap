@@ -1,6 +1,10 @@
 package com.juanmuscaria.hotswap.blocks;
 
+import com.juanmuscaria.hotswap.HMetals;
+import com.juanmuscaria.hotswap.fluids.HFluids;
 import com.juanmuscaria.hotswap.items.HItems;
+import net.dries007.tfc.common.blocks.GroundcoverBlock;
+import net.dries007.tfc.common.blocks.OreDeposit;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.util.Helpers;
@@ -9,6 +13,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
@@ -33,6 +43,19 @@ public class HBlocks {
                 register(("ore/" + grade.name() + "_" + ore.name() + "/" + rock.name()), () -> ore.create(rock))
             )
         )
+    );
+    public static final Map<HOre, RegistryObject<Block>> SMALL_ORES = Helpers.mapOfKeys(HOre.class, HOre::isGraded, type ->
+        register(("ore/small_" + type.name()), () -> GroundcoverBlock.looseOre(BlockBehaviour.Properties.of().mapColor(MapColor.GRASS).strength(0.05F, 0.0F).sound(SoundType.NETHER_ORE).noCollission().pushReaction(PushReaction.DESTROY)))
+    );
+
+    public static final Map<HMetals, Map<HMetals.BlockType, RegistryObject<Block>>> METALS = Helpers.mapOfKeys(HMetals.class, metal ->
+        Helpers.mapOfKeys(HMetals.BlockType.class, type -> type.has(metal), type ->
+            register(type.createName(metal), type.create(metal), type.createBlockItem(new Item.Properties()))
+        )
+    );
+
+    public static final Map<HMetals, RegistryObject<LiquidBlock>> METAL_FLUIDS = Helpers.mapOfKeys(HMetals.class, metal ->
+        registerNoItem("fluid/metal/" + metal.name(), () -> new LiquidBlock(HFluids.METALS.get(metal).source(), BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable()))
     );
 
     private static <T extends Block> RegistryObject<T> registerNoItem(String name, Supplier<T> blockSupplier) {

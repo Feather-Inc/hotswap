@@ -23,6 +23,10 @@ public class HBlockTagsProvider extends BlockTagsProvider {
         super(output, lookupProvider, Hotswap.MOD_ID, existingFileHelper);
     }
 
+    private static TagKey<Block> forgeTag(String name) {
+        return BlockTags.create(new ResourceLocation("forge", name));
+    }
+
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         var allOreTags = List.of(
@@ -58,9 +62,5 @@ public class HBlockTagsProvider extends BlockTagsProvider {
                 })
             )
         );
-    }
-
-    private static TagKey<Block> forgeTag(String name) {
-        return BlockTags.create(new ResourceLocation("forge", name));
     }
 }

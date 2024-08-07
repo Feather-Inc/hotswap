@@ -3,11 +3,9 @@ package com.juanmuscaria.hotswap.data.loot;
 import com.juanmuscaria.hotswap.Hotswap;
 import com.juanmuscaria.hotswap.blocks.HBlocks;
 import com.juanmuscaria.hotswap.items.HItems;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,7 +21,7 @@ public class HBlockLootProvider extends BlockLootSubProvider {
     protected void generate() {
         HBlocks.ORES.forEach((rock, rockOres) ->
             rockOres.forEach((ore, block) ->
-               dropOther(block.get(), HItems.ORES.get(ore).get())
+                dropOther(block.get(), HItems.ORES.get(ore).get())
             )
         );
 

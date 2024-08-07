@@ -1,10 +1,10 @@
 package com.juanmuscaria.hotswap;
 
 import com.juanmuscaria.hotswap.blocks.HBlocks;
+import com.juanmuscaria.hotswap.fluids.HFluids;
 import com.juanmuscaria.hotswap.items.HItems;
 import com.mojang.logging.LogUtils;
 import net.dries007.tfc.common.TFCCreativeTabs;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.util.MavenVersionStringHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -35,6 +35,8 @@ public class Hotswap {
         modEventBus.addListener(this::addCreativeTabItems);
         HBlocks.BLOCKS.register(modEventBus);
         HItems.ITEMS.register(modEventBus);
+        HFluids.FLUID_TYPES.register(modEventBus);
+        HFluids.FLUIDS.register(modEventBus);
     }
 
     private void addCreativeTabItems(BuildCreativeModeTabContentsEvent event) {
@@ -76,11 +78,11 @@ public class Hotswap {
             LOGGER.info("Generating mod mermaid diagram and mod list...");
             var idBlacklist = Arrays.asList("forge", "mcp", "fml", "minecraft");
             var template = """
-            class `%s`["%s"] {
-              id: %s
-              version: %s
-            }
-            """;
+                class `%s`["%s"] {
+                  id: %s
+                  version: %s
+                }
+                """;
             var graph = new StringBuilder("```mermaid\nclassDiagram\n");
             var list = new StringBuilder("# Mods ");
             var mods = ModList.get().getMods();
