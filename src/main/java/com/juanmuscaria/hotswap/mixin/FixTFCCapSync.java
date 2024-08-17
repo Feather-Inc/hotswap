@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 // TODO: Remove once https://github.com/TerraFirmaCraft/TerraFirmaCraft/issues/2753 is closed
@@ -28,6 +29,7 @@ public class FixTFCCapSync {
          */
         @Overwrite
         public static void writeToNetwork(ItemStack stack, FriendlyByteBuf buffer) {
+            // NO-OP: Effectively remove TFC's original hook
         }
 
         /**
@@ -36,6 +38,7 @@ public class FixTFCCapSync {
          */
         @Overwrite
         public static void readFromNetwork(ItemStack stack, FriendlyByteBuf buffer) {
+            // Effectively replaces TFC's original hook
             hotswap$readFromNetwork(FoodCapability.NETWORK_CAPABILITY, stack, buffer);
             hotswap$readFromNetwork(HeatCapability.NETWORK_CAPABILITY, stack, buffer);
         }
@@ -53,21 +56,30 @@ public class FixTFCCapSync {
     @Mixin(FriendlyByteBuf.class)
     public static abstract class FriendlyByteBufMixin {
         @Unique
-        private static void hotswap$writeToNetwork(Capability<? extends INBTSerializable<CompoundTag>> capability, ItemStack stack, FriendlyByteBuf buffer) {
+        private static void hotswap$writeToNetwork(Capability<? extends INBTSerializable<CompoundTag>> capability, ItemStack stack, CompoundTag compoundTag) {
             stack.getCapability(capability)
                 .map(INBTSerializable::serializeNBT)
-                .ifPresent(nbt -> stack.addTagElement(CAP_PREFIX + capability.getName(), nbt));
+                .ifPresent(nbt -> compoundTag.put(CAP_PREFIX + capability.getName(), nbt));
         }
 
-        @SuppressWarnings({"DataFlowIssue", "SynchronizationOnLocalVariableOrMethodParameter"})
-        @Inject(method = "writeItemStack", at = @At("HEAD"), remap = false)
-        private void addCapData(ItemStack stack, boolean limitedTag, CallbackInfoReturnable<FriendlyByteBuf> cir) {
+        @SuppressWarnings("SynchronizationOnLocalVariableOrMethodParameter")
+        @Redirect(method = "writeItemStack", at = @At(value = "INVOKE", target = "Lnet/minecraft/network/FriendlyByteBuf;writeNbt(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/network/FriendlyByteBuf;"), remap = false)
+        private FriendlyByteBuf addCapData(FriendlyByteBuf instance, CompoundTag compoundTag, ItemStack stack, boolean limitedTag) {
             synchronized (stack) {
                 if (ItemStackCapabilitySync.hasSyncableCapability(stack)) {
-                    hotswap$writeToNetwork(FoodCapability.NETWORK_CAPABILITY, stack, (FriendlyByteBuf) (Object) this);
-                    hotswap$writeToNetwork(HeatCapability.NETWORK_CAPABILITY, stack, (FriendlyByteBuf) (Object) this);
+                    if (compoundTag == null) {
+                        // Safe to create a blank tag and inject data there
+                        compoundTag = new CompoundTag();
+                    } else {
+                        // We need to copy the original tag to avoid mutating the item stack with injected capability data!
+                        compoundTag = compoundTag.copy();
+                    }
+                    hotswap$writeToNetwork(FoodCapability.NETWORK_CAPABILITY, stack, compoundTag);
+                    hotswap$writeToNetwork(HeatCapability.NETWORK_CAPABILITY, stack, compoundTag);
                 }
             }
+
+            return instance.writeNbt(compoundTag);
         }
     }
 }
