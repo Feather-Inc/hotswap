@@ -24,6 +24,7 @@ public class HotswapDataGenerators {
         if (event.includeServer()) {
             generator.addProvider(true, new HRecipeProvider(pack));
             generator.addProvider(true, HLootTableProvider.create(pack));
+            generator.addProvider(true, new HMetalProvider(pack));
 
             var blockTags = new HBlockTagsProvider(pack, lookup, fileHelper);
             generator.addProvider(true, blockTags);

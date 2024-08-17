@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,17 +22,19 @@ public class HBlockLootProvider extends BlockLootSubProvider {
     protected void generate() {
         HBlocks.ORES.forEach((rock, rockOres) ->
             rockOres.forEach((ore, block) ->
-                dropOther(block.get(), HItems.ORES.get(ore).get())
+                add(block.get(), createOreDrop(block.get(), HItems.ORES.get(ore).get()))
             )
         );
 
         HBlocks.GRADED_ORES.forEach((rock, oreGrades) ->
             oreGrades.forEach((ore, gradeBlocks) ->
                 gradeBlocks.forEach((grade, block) ->
-                    dropOther(block.get(), HItems.GRADED_ORES.get(ore).get(grade).get())
+                    add(block.get(), createOreDrop(block.get(), HItems.GRADED_ORES.get(ore).get(grade).get()))
                 )
             )
         );
+
+        HBlocks.SMALL_ORES.forEach((ore, block) -> dropSelf(block.get()));
     }
 
     @Override

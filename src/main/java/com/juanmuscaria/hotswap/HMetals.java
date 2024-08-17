@@ -32,9 +32,9 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public enum HMetals implements StringRepresentable, RegistryMetal {
-    LEAD(0x5d608a, MapColor.TERRACOTTA_GRAY, Rarity.COMMON, false, false, false),
-    OSMIUM(0x426d75, MapColor.TERRACOTTA_CYAN, Rarity.UNCOMMON, false, false, false),
-    URANIUM(0x477542, MapColor.TERRACOTTA_GREEN, Rarity.UNCOMMON, false, false, false),
+    LEAD(0x5d608a, MapColor.TERRACOTTA_GRAY, Rarity.COMMON, Metal.Tier.TIER_0, false, false, false),
+    OSMIUM(0x426d75, MapColor.TERRACOTTA_CYAN, Rarity.UNCOMMON, Metal.Tier.TIER_III, false, false, false),
+    URANIUM(0x477542, MapColor.TERRACOTTA_GREEN, Rarity.UNCOMMON, Metal.Tier.TIER_V, false, false, false),
     ;
 
     private final String serializedName;
@@ -48,8 +48,8 @@ public enum HMetals implements StringRepresentable, RegistryMetal {
     private final Rarity rarity;
     private final int color;
 
-    HMetals(int color, MapColor mapColor, Rarity rarity, boolean parts, boolean armor, boolean utility) {
-        this(color, mapColor, rarity, Metal.Tier.TIER_0, null, null, parts, armor, utility);
+    HMetals(int color, MapColor mapColor, Rarity rarity, Metal.Tier metalTier, boolean parts, boolean armor, boolean utility) {
+        this(color, mapColor, rarity, metalTier, null, null, parts, armor, utility);
     }
 
     HMetals(int color, MapColor mapColor, Rarity rarity, Metal.Tier metalTier, @Nullable net.minecraft.world.item.Tier toolTier, @Nullable ArmorMaterial armorTier, boolean parts, boolean armor, boolean utility) {
@@ -255,7 +255,7 @@ public enum HMetals implements StringRepresentable, RegistryMetal {
         }
     }
 
-    private enum Type {
+    public enum Type {
         DEFAULT(metal -> true),
         PART(HMetals::hasParts),
         TOOL(HMetals::hasTools),
@@ -268,7 +268,7 @@ public enum HMetals implements StringRepresentable, RegistryMetal {
             this.predicate = predicate;
         }
 
-        boolean hasType(HMetals metal) {
+        public boolean hasType(HMetals metal) {
             return predicate.test(metal);
         }
     }

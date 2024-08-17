@@ -1,0 +1,15 @@
+{
+  "double_ingots": {
+    "tag": "forge:double_ingots/uranium"
+  },
+  "fluid": "hotswap:metal/uranium",
+  "ingots": {
+    "tag": "forge:ingots/uranium"
+  },
+  "melt_temperature": 1132.0,
+  "sheets": {
+    "tag": "forge:sheets/uranium"
+  },
+  "specific_heat_capacity": 0.00429,
+  "tier": 5
+}

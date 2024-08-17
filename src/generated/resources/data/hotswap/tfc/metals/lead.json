@@ -1,0 +1,15 @@
+{
+  "double_ingots": {
+    "tag": "forge:double_ingots/lead"
+  },
+  "fluid": "hotswap:metal/lead",
+  "ingots": {
+    "tag": "forge:ingots/lead"
+  },
+  "melt_temperature": 327.0,
+  "sheets": {
+    "tag": "forge:sheets/lead"
+  },
+  "specific_heat_capacity": 0.015,
+  "tier": 0
+}

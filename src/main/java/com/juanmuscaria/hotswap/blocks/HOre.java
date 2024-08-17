@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
 
 public enum HOre {
-    iridosmine(true),
+    IRIDOSMINE(false),
     URANINITE(true),
     GALENA(true);
 

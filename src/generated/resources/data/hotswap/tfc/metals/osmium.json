@@ -1,0 +1,15 @@
+{
+  "double_ingots": {
+    "tag": "forge:double_ingots/osmium"
+  },
+  "fluid": "hotswap:metal/osmium",
+  "ingots": {
+    "tag": "forge:ingots/osmium"
+  },
+  "melt_temperature": 3033.0,
+  "sheets": {
+    "tag": "forge:sheets/osmium"
+  },
+  "specific_heat_capacity": 0.00545,
+  "tier": 3
+}
